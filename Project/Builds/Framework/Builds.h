@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/Project-ObjC
 //
-//  vesion: 0.0.1
+//  vesion: 0.0.2
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -33,12 +33,10 @@
 #ifndef Builds_h
 #define Builds_h
 
-#import "BasisRequest.h"
-#import "Network.h"
-
-#import "UIViewController+Builds.h"
 #import "BasisCollectionViewController.h"
+#import "BasisRequest.h"
 #import "BasisTableViewController.h"
 #import "BasisViewController.h"
+#import "UIViewController+Builds.h"
 
 #endif /* Builds_h */

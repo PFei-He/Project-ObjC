@@ -13,8 +13,6 @@
 		4578C2451C3E08B700968548 /* DebugMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 4578C2431C3E08B700968548 /* DebugMode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4578C2461C3E08B700968548 /* DebugMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4578C2441C3E08B700968548 /* DebugMode.m */; };
 		4578C2481C3E094100968548 /* Builds.h in Headers */ = {isa = PBXBuildFile; fileRef = 4578C2471C3E093700968548 /* Builds.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4578C2651C3E1AE200968548 /* Network.h in Headers */ = {isa = PBXBuildFile; fileRef = 4578C2631C3E1AE200968548 /* Network.h */; };
-		4578C2661C3E1AE200968548 /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 4578C2641C3E1AE200968548 /* Network.m */; };
 		4578C2751C3E254D00968548 /* UIViewController+Builds.h in Headers */ = {isa = PBXBuildFile; fileRef = 4578C2731C3E254D00968548 /* UIViewController+Builds.h */; };
 		4578C2761C3E254D00968548 /* UIViewController+Builds.m in Sources */ = {isa = PBXBuildFile; fileRef = 4578C2741C3E254D00968548 /* UIViewController+Builds.m */; };
 		4578C28A1C3E337600968548 /* BasisTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4578C2881C3E337600968548 /* BasisTableViewController.h */; };
@@ -33,8 +31,6 @@
 		4578C2431C3E08B700968548 /* DebugMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugMode.h; sourceTree = "<group>"; };
 		4578C2441C3E08B700968548 /* DebugMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugMode.m; sourceTree = "<group>"; };
 		4578C2471C3E093700968548 /* Builds.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Builds.h; path = Framework/Builds.h; sourceTree = "<group>"; };
-		4578C2631C3E1AE200968548 /* Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
-		4578C2641C3E1AE200968548 /* Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Network.m; sourceTree = "<group>"; };
 		4578C2731C3E254D00968548 /* UIViewController+Builds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Builds.h"; sourceTree = "<group>"; };
 		4578C2741C3E254D00968548 /* UIViewController+Builds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Builds.m"; sourceTree = "<group>"; };
 		4578C2881C3E337600968548 /* BasisTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasisTableViewController.h; sourceTree = "<group>"; };
@@ -107,8 +103,6 @@
 			children = (
 				458028001C3F44A8001F00A9 /* BasisRequest.h */,
 				458028011C3F44A8001F00A9 /* BasisRequest.m */,
-				4578C2631C3E1AE200968548 /* Network.h */,
-				4578C2641C3E1AE200968548 /* Network.m */,
 			);
 			name = Model;
 			path = Framework/Model;
@@ -166,7 +160,6 @@
 				4578C2481C3E094100968548 /* Builds.h in Headers */,
 				4578C28A1C3E337600968548 /* BasisTableViewController.h in Headers */,
 				456E60331C47425E00F1ADD9 /* BasisCollectionViewController.h in Headers */,
-				4578C2651C3E1AE200968548 /* Network.h in Headers */,
 				4578C2751C3E254D00968548 /* UIViewController+Builds.h in Headers */,
 				4578C28E1C3E338200968548 /* BasisViewController.h in Headers */,
 				4578C2451C3E08B700968548 /* DebugMode.h in Headers */,
@@ -236,7 +229,6 @@
 				4578C28F1C3E338200968548 /* BasisViewController.m in Sources */,
 				4578C28B1C3E337600968548 /* BasisTableViewController.m in Sources */,
 				4578C2761C3E254D00968548 /* UIViewController+Builds.m in Sources */,
-				4578C2661C3E1AE200968548 /* Network.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

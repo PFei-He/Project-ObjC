@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/Project-ObjC
 //
-//  vesion: 0.0.1
+//  vesion: 0.0.2
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -38,11 +38,10 @@
 //调试模式
 + (void)open:(BOOL)debugOrNot
 {
-    [BasisRequest setDebugMode:debugOrNot];
     [BasisCollectionViewController setDebugMode:debugOrNot];
+    [BasisRequest setDebugMode:debugOrNot];
     [BasisTableViewController setDebugMode:debugOrNot];
     [BasisViewController setDebugMode:debugOrNot];
-    [Network setDebugMode:debugOrNot];
 }
 
 @end

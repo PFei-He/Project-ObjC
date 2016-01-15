@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/Project-ObjC
 //
-//  vesion: 0.0.1
+//  vesion: 0.0.2
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@
 //
 
 #import "BasisRequest.h"
-#import "Network.h"
+#import <AFNetworking/AFNetworking.h>
 
 ///调试模式
 static BOOL debugMode = NO;
@@ -42,6 +42,17 @@ static BOOL debugMode = NO;
 + (void)setDebugMode:(BOOL)debugOrNot
 {
     debugMode = debugOrNot;
+}
+
+//单例
++ (BasisRequest *)sharedInstance
+{
+    static BasisRequest *sharedInstance = nil;
+    static dispatch_once_t BasisRequest_onceToken;
+    dispatch_once(&BasisRequest_onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
 }
 
 //发送请求
@@ -60,12 +71,26 @@ static BOOL debugMode = NO;
 - (void)sendWithAPI:(NSString *)api params:(NSDictionary *)params results:(void (^)(id))block
 {
     if (debugMode) {
-        NSLog(@"[ %@ ] request sender: %@", [Network class], [self classForCoder]);
+        NSLog(@"[ %@ ] request url: %@%@", [self classForCoder], [BasisRequest sharedInstance].hostAddress, api);
         if (![params isEqualToDictionary:@{}]) {
             NSLog(@"[ %@ ] request params: %@", [self classForCoder], params);
         }
     }
-    [Network requestWithURL:api params:params results:block];
+    
+    //发送请求
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", nil];
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@", [BasisRequest sharedInstance].hostAddress, api] parameters:params?params:@{} success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {//请求成功
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            block(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {//请求失败
+        if (debugMode) {
+            NSLog(@"[ %@ ] request error: %@", [self classForCoder], error);
+        }
+        block(nil);
+    }];
 }
 
 //添加请求者

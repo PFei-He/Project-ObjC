@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/Project-ObjC
 //
-//  vesion: 0.0.1
+//  vesion: 0.0.2
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -85,19 +85,17 @@ static BOOL debugMode = NO;
 //请求即将开始
 - (void)requestWillStartNotification:(NSNotification *)notification
 {
-    if (debugMode) {
-        NSLog(@"[ %@ ] request will start", [self classForCoder]);
-    }
     //显示提示框
     [SVProgressHUD showWithStatus:@"加载中"];
+    
+    if (debugMode) {
+        NSLog(@"[ %@ ] request will start with sender: %@", [self classForCoder], notification.object);
+    }
 }
 
 //请求已经结束
 - (void)requestWasEndedNotification:(NSNotification *)notification
 {
-    if (debugMode) {
-        NSLog(@"[ %@ ] request was ended", [self classForCoder]);
-    }
     if (_requestSuccess) {//请求成功
         //移除提示框
         [SVProgressHUD dismiss];
@@ -105,30 +103,36 @@ static BOOL debugMode = NO;
         //显示请求失败的提示框
         [SVProgressHUD showErrorWithStatus:@"请求失败"];
     }
+    
+    if (debugMode) {
+        NSLog(@"[ %@ ] request was ended with sender: %@", [self classForCoder], notification.object);
+    }
 }
 
 //请求成功
 - (void)requestSuccessNotification:(NSNotification *)notification
 {
-    if (debugMode) {
-        NSLog(@"[ %@ ] request result: %@", [self classForCoder], notification.object);
-    }
     _successObject      = notification.object;
     _additionalObjects  = notification.userInfo;
     _sender             = notification.userInfo[@"sender"];
     _requestSuccess     = YES;
+    
+    if (debugMode) {
+        NSLog(@"[ %@ ] request result: %@", [_sender classForCoder], notification.object);
+    }
 }
 
 //请求失败
 - (void)requestFailedNotification:(NSNotification *)notification
 {
-    if (debugMode) {
-        NSLog(@"[ %@ ] request result: %@", [self classForCoder], notification.object);
-    }
     _failedObject       = notification.object;
     _additionalObjects  = notification.userInfo;
     _sender             = notification.userInfo[@"sender"];
     _requestSuccess     = NO;
+    
+    if (debugMode) {
+        NSLog(@"[ %@ ] request result: %@", [_sender classForCoder], notification.object);
+    }
 }
 
 #pragma mark - Public Methods

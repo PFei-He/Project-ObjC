@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/Project-ObjC
 //
-//  vesion: 0.0.1
+//  vesion: 0.0.2
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -34,6 +34,9 @@
 
 @interface BasisRequest : PFModel
 
+///主机地址
+@property (copy, nonatomic) NSString *hostAddress;
+
 ///请求地址的接口
 @property (copy, nonatomic) NSString *requestAPI;
 
@@ -44,6 +47,14 @@
  *  @return 无
  */
 + (void)setDebugMode:(BOOL)debugOrNot;
+
+/**
+ *  @brief 单例
+ *  @note 无
+ *  @param 无
+ *  @return 实例
+ */
++ (BasisRequest *)sharedInstance;
 
 /**
  *  @brief 发送请求

@@ -29,7 +29,7 @@
 //
 
 #import "Initialization.h"
-#import "Network.h"
+#import "BasisRequest.h"
 #import "Api.h"
 
 @implementation Initialization
@@ -53,7 +53,7 @@
 //初始化主机地址
 + (void)initHost:(NSString *)url
 {
-    [Network sharedInstance].hostAddress = url;
+    [BasisRequest sharedInstance].hostAddress = url;
 }
 
 //初始化接口
