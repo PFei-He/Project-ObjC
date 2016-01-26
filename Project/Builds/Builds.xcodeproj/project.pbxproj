@@ -21,6 +21,8 @@
 		4578C28F1C3E338200968548 /* BasisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4578C28D1C3E338200968548 /* BasisViewController.m */; };
 		458028021C3F44A8001F00A9 /* BasisRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 458028001C3F44A8001F00A9 /* BasisRequest.h */; };
 		458028031C3F44A8001F00A9 /* BasisRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 458028011C3F44A8001F00A9 /* BasisRequest.m */; };
+		45F33AF11C576610002B3926 /* BuildsVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F33AEF1C576610002B3926 /* BuildsVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45F33AF21C576610002B3926 /* BuildsVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F33AF01C576610002B3926 /* BuildsVersion.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		4578C28D1C3E338200968548 /* BasisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasisViewController.m; sourceTree = "<group>"; };
 		458028001C3F44A8001F00A9 /* BasisRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasisRequest.h; sourceTree = "<group>"; };
 		458028011C3F44A8001F00A9 /* BasisRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasisRequest.m; sourceTree = "<group>"; };
+		45F33AEF1C576610002B3926 /* BuildsVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildsVersion.h; sourceTree = "<group>"; };
+		45F33AF01C576610002B3926 /* BuildsVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildsVersion.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,8 @@
 			children = (
 				4578C2431C3E08B700968548 /* DebugMode.h */,
 				4578C2441C3E08B700968548 /* DebugMode.m */,
+				45F33AEF1C576610002B3926 /* BuildsVersion.h */,
+				45F33AF01C576610002B3926 /* BuildsVersion.m */,
 			);
 			name = Debug;
 			path = Framework/Debug;
@@ -159,6 +165,7 @@
 			files = (
 				4578C2481C3E094100968548 /* Builds.h in Headers */,
 				4578C28A1C3E337600968548 /* BasisTableViewController.h in Headers */,
+				45F33AF11C576610002B3926 /* BuildsVersion.h in Headers */,
 				456E60331C47425E00F1ADD9 /* BasisCollectionViewController.h in Headers */,
 				4578C2751C3E254D00968548 /* UIViewController+Builds.h in Headers */,
 				4578C28E1C3E338200968548 /* BasisViewController.h in Headers */,
@@ -229,6 +236,7 @@
 				4578C28F1C3E338200968548 /* BasisViewController.m in Sources */,
 				4578C28B1C3E337600968548 /* BasisTableViewController.m in Sources */,
 				4578C2761C3E254D00968548 /* UIViewController+Builds.m in Sources */,
+				45F33AF21C576610002B3926 /* BuildsVersion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

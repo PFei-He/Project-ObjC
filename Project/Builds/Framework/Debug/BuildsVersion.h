@@ -1,8 +1,8 @@
 //
-//  WeatherModel.h
-//  Project
+//  BuildsVersion.h
+//  Builds
 //
-//  Created by PFei_He on 16/1/11.
+//  Created by PFei_He on 16/1/26.
 //  Copyright © 2016年 PF-Lib. All rights reserved.
 //
 //   __________   __________    _________   ___________  ___________   __________  ___________
@@ -35,42 +35,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
-//  ***** 天气接口 *****
+//  ***** 版本 *****
 //
 
-#import "BasisRequest.h"
+#import <Foundation/Foundation.h>
 
-@interface WeatherResult : PFModel
-
-@property (copy, nonatomic)     NSString        *Radar;
-@property (copy, nonatomic)     NSString        *SD;
-@property (copy, nonatomic)     NSString        *WD;
-@property (copy, nonatomic)     NSString        *WS;
-@property (strong, nonatomic)   NSNumber        *WSE;
-@property (copy, nonatomic)     NSString        *city;
-@property (strong, nonatomic)   NSNumber        *cityid;
-@property (strong, nonatomic)   NSNumber        *isRadar;
-@property (copy, nonatomic)     NSString        *njd;
-@property (strong, nonatomic)   NSNumber        *qy;
-@property (strong, nonatomic)   NSNumber        *temp;
-@property (copy, nonatomic)     NSString        *time;
-
-@end
-
-@interface WeatherModel : PFModel
-
-@property (strong, nonatomic)   NSDictionary    *weatherinfo;
-
-@end
-
-@interface WeatherRequest : BasisRequest
+@interface BuildsVersion : NSObject
 
 /**
- *  @brief 发送请求
+ *  @brief 当前版本
  *  @note 无
  *  @param 无
- *  @return 无
+ *  @return 当前版本
  */
-- (void)send;
++ (NSString *)currentVersion;
 
 @end
