@@ -1,8 +1,8 @@
 //
-//  CityListViewController.m
+//  CityTableViewController.h
 //  Project
 //
-//  Created by PFei_He on 16/1/11.
+//  Created by PFei_He on 16/2/23.
 //  Copyright © 2016年 PF-Lib. All rights reserved.
 //
 //   __________   __________    _________   ___________  ___________   __________  ___________
@@ -38,48 +38,8 @@
 //  ***** 城市列表 *****
 //
 
-#import "Interface.h"
+#import "BasisTableViewController.h"
 
-@interface CityListViewController ()
-
-@end
-
-@implementation CityListViewController
-
-#pragma mark - Life Cycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - UITableViewDataSource Methods
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 3;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identifier"];
-    cell.textLabel.text = @[@"北京", @"上海", @"广州"][indexPath.row];
-    cell.textLabel.textColor = [Settings appColor];
-    return cell;
-}
-
-#pragma mark - UITableViewDelegate Methods
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [UserSettings setUserSettings:@{@"api": [Api sharedInstance].api[indexPath.row]}];
-    [self.navigationController popViewControllerAnimated:YES];
-}
+@interface CityTableViewController : BasisTableViewController
 
 @end

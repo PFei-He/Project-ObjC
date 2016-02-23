@@ -27,11 +27,11 @@
 		4588854B1C45E091002FE9FF /* MoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4588854A1C45E091002FE9FF /* MoreModel.m */; };
 		4588854E1C45E095002FE9FF /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4588854D1C45E095002FE9FF /* WeatherModel.m */; };
 		458885511C45E09F002FE9FF /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 458885501C45E09F002FE9FF /* GuideViewController.m */; };
-		458885561C45E0AC002FE9FF /* CityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 458885531C45E0AC002FE9FF /* CityListViewController.m */; };
 		458885571C45E0AC002FE9FF /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 458885551C45E0AC002FE9FF /* HomeViewController.m */; };
 		4588855A1C45E0B1002FE9FF /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 458885591C45E0B1002FE9FF /* MoreTableViewController.m */; };
 		458886AB1C461E8F002FE9FF /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458886A91C461E8F002FE9FF /* Home.storyboard */; };
 		458886AE1C461EA3002FE9FF /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458886AC1C461EA3002FE9FF /* More.storyboard */; };
+		45CF94891C7BF92900EB8990 /* CityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CF94881C7BF92900EB8990 /* CityTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,14 +89,14 @@
 		4588854D1C45E095002FE9FF /* WeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherModel.m; path = Model/WeatherModel.m; sourceTree = "<group>"; };
 		4588854F1C45E09F002FE9FF /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GuideViewController.h; path = ViewModel/GuideViewController.h; sourceTree = "<group>"; };
 		458885501C45E09F002FE9FF /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GuideViewController.m; path = ViewModel/GuideViewController.m; sourceTree = "<group>"; };
-		458885521C45E0AC002FE9FF /* CityListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CityListViewController.h; path = ViewModel/CityListViewController.h; sourceTree = "<group>"; };
-		458885531C45E0AC002FE9FF /* CityListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CityListViewController.m; path = ViewModel/CityListViewController.m; sourceTree = "<group>"; };
 		458885541C45E0AC002FE9FF /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ViewModel/HomeViewController.h; sourceTree = "<group>"; };
 		458885551C45E0AC002FE9FF /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = ViewModel/HomeViewController.m; sourceTree = "<group>"; };
 		458885581C45E0B1002FE9FF /* MoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreTableViewController.h; path = ViewModel/MoreTableViewController.h; sourceTree = "<group>"; };
 		458885591C45E0B1002FE9FF /* MoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreTableViewController.m; path = ViewModel/MoreTableViewController.m; sourceTree = "<group>"; };
 		458886AA1C461E8F002FE9FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		458886AD1C461EA3002FE9FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/More.storyboard; sourceTree = "<group>"; };
+		45CF94871C7BF92900EB8990 /* CityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CityTableViewController.h; path = ViewModel/CityTableViewController.h; sourceTree = "<group>"; };
+		45CF94881C7BF92900EB8990 /* CityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CityTableViewController.m; path = ViewModel/CityTableViewController.m; sourceTree = "<group>"; };
 		708CF1CDF86297677AA1A80D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9446C1FCA2C1C9CA46D1BCCC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DBCB166DFFD241954A66C6D0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -366,8 +366,8 @@
 		458885431C45E04F002FE9FF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				458885521C45E0AC002FE9FF /* CityListViewController.h */,
-				458885531C45E0AC002FE9FF /* CityListViewController.m */,
+				45CF94871C7BF92900EB8990 /* CityTableViewController.h */,
+				45CF94881C7BF92900EB8990 /* CityTableViewController.m */,
 				458885541C45E0AC002FE9FF /* HomeViewController.h */,
 				458885551C45E0AC002FE9FF /* HomeViewController.m */,
 			);
@@ -611,9 +611,9 @@
 				458885141C45DFF5002FE9FF /* Weatherinfo+CoreDataProperties.m in Sources */,
 				456222131C3B526800AB4EAF /* AppDelegate.m in Sources */,
 				458885131C45DFF5002FE9FF /* Project.xcdatamodeld in Sources */,
-				458885561C45E0AC002FE9FF /* CityListViewController.m in Sources */,
 				458885571C45E0AC002FE9FF /* HomeViewController.m in Sources */,
 				458885261C45E009002FE9FF /* UserSettings.m in Sources */,
+				45CF94891C7BF92900EB8990 /* CityTableViewController.m in Sources */,
 				458885511C45E09F002FE9FF /* GuideViewController.m in Sources */,
 				458885251C45E009002FE9FF /* Settings.m in Sources */,
 				458885231C45E009002FE9FF /* Api.m in Sources */,

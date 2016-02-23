@@ -43,7 +43,7 @@
 
 #import "WeatherModel.h"
 
-#import "CityListViewController.h"
+#import "CityTableViewController.h"
 #import "HomeViewController.h"
 
 
