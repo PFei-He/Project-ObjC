@@ -83,7 +83,7 @@
 
 /**
  *  @brief 请求即将开始
- *  @note 无
+ *  @note 此方法已实现提示框的处理，如需自定义，请自行重写此方法
  *  @param notification: 请求返回的通知对象
  *  @return 无
  */
@@ -91,7 +91,7 @@
 
 /**
  *  @brief 请求已经结束
- *  @note 无
+ *  @note 此方法已实现提示框的处理，如需自定义，请自行重写此方法
  *  @param notification: 请求返回的通知对象
  *  @return 无
  */
