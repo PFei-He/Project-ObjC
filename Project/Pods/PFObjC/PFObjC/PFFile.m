@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFObjC
 //
-//  vesion: 0.2.3
+//  vesion: 0.4.0
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -35,9 +35,9 @@
 @implementation PFFile
 
 //创建文件
-+ (void)createFileWithName:(NSString *)fileName
++ (void)createWithName:(NSString *)fileName
 {
-    NSString *path = [PFFile readFileWithName:fileName directory:@"doucument" type:nil];
+    NSString *path = [PFFile readWithName:fileName directory:@"doucument" type:nil];
     NSFileManager *manager = [NSFileManager defaultManager];
     if (![manager fileExistsAtPath:path]) {//如果文件不存在则创建文件
         [manager createFileAtPath:path contents:nil attributes:nil];
@@ -45,64 +45,64 @@
 }
 
 //创建文件
-+ (void)createFileWithName:(NSString *)fileName params:(NSDictionary *)params
++ (void)createWithName:(NSString *)fileName params:(NSDictionary *)params
 {
-    NSString *path = [PFFile readFileWithName:fileName directory:@"doucument" type:nil];
+    NSString *path = [PFFile readWithName:fileName directory:@"doucument" type:nil];
     NSFileManager *manager = [NSFileManager defaultManager];
     if (![manager fileExistsAtPath:path]) {//如果文件不存在则创建文件
         [manager createFileAtPath:path contents:nil attributes:nil];
-        [PFFile fileWithName:fileName setParams:params];
+        [PFFile modifyWithName:fileName setParams:params];
     }
 }
 
 //读取Dictionary类型文件
 + (NSDictionary *)readDictionaryWithName:(NSString *)fileName
 {
-    return [[NSDictionary alloc] initWithContentsOfFile:[PFFile readFileWithName:fileName directory:@"doucument" type:nil]];
+    return [[NSDictionary alloc] initWithContentsOfFile:[PFFile readWithName:fileName directory:@"doucument" type:nil]];
 }
 
 //读取String类型文件
 + (NSString *)readStringWithName:(NSString *)fileName
 {
-    return [[NSString alloc] initWithContentsOfFile:[PFFile readFileWithName:fileName directory:@"doucument" type:nil] encoding:NSUTF8StringEncoding error:nil];
+    return [[NSString alloc] initWithContentsOfFile:[PFFile readWithName:fileName directory:@"doucument" type:nil] encoding:NSUTF8StringEncoding error:nil];
 }
 
 //读取JSON类型文件
 + (NSData *)readJSONWithName:(NSString *)fileName
 {
-    return [PFFile readFileWithName:fileName directory:@"bundle" type:@"json"];
+    return [PFFile readWithName:fileName directory:@"bundle" type:@"json"];
 }
 
 //读取XML类型文件
 + (NSData *)readXMLWithName:(NSString *)fileName
 {
-    return [PFFile readFileWithName:fileName directory:@"bundle" type:@"xml"];
+    return [PFFile readWithName:fileName directory:@"bundle" type:@"xml"];
 }
 
 //读取文件的路径
 + (NSString *)readPathWithName:(NSString *)fileName
 {
-    return [PFFile readFileWithName:fileName directory:@"document" type:nil];
+    return [PFFile readWithName:fileName directory:@"document" type:nil];
 }
 
 //写入文件
-+ (BOOL)fileWithName:(NSString *)fileName setParams:(NSDictionary *)params
++ (BOOL)modifyWithName:(NSString *)fileName setParams:(NSDictionary *)params
 {
-    return [params writeToFile:[PFFile readFileWithName:fileName directory:@"document" type:nil] atomically:YES];
+    return [params writeToFile:[PFFile readWithName:fileName directory:@"document" type:nil] atomically:YES];
 }
 
 //添加参数
-+ (BOOL)fileWithName:(NSString *)fileName addParams:(NSDictionary *)params
++ (BOOL)modifyWithName:(NSString *)fileName addParams:(NSDictionary *)params
 {
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithDictionary:[PFFile readDictionaryWithName:fileName]];
     [dictionary addEntriesFromDictionary:params];
-    return [PFFile fileWithName:fileName setParams:dictionary];
+    return [PFFile modifyWithName:fileName setParams:dictionary];
 }
 
 //删除文件
-+ (void)removeFileWithName:(NSString *)fileName
++ (void)removeWithName:(NSString *)fileName
 {
-    NSString *path = [PFFile readFileWithName:fileName directory:@"doucument" type:nil];
+    NSString *path = [PFFile readWithName:fileName directory:@"doucument" type:nil];
     NSFileManager *manager = [NSFileManager defaultManager];
     if ([manager fileExistsAtPath:path]) {//如果文件存在则删除文件
         [manager removeItemAtPath:path error:nil];
@@ -110,7 +110,7 @@
 }
 
 ///读取资源包文件或沙盒文件
-+ (id)readFileWithName:(NSString *)fileName directory:(NSString *)directory type:(NSString *)type
++ (id)readWithName:(NSString *)fileName directory:(NSString *)directory type:(NSString *)type
 {
     if ([directory isEqualToString:@"bundle"]) {//资源包文件
         NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:type];

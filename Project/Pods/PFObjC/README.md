@@ -10,7 +10,7 @@
 
 版本
 ---
-0.2.3
+0.4.0
 
 说明
 ---
@@ -18,7 +18,6 @@
 * `NSDate+PFObjC`       - NSDate类目
 * `NSString+PFObjC`     - NSString类目
 * `NSTimer+PFObjC`      - NSTimer类目
-* `UIAlertView+PFObjC`  - UIAlertView类目
 * `UIView+PFObjC`       - UIView类目
 
 #### Framework
@@ -42,7 +41,7 @@
 #### CocoaPods
 ```
 platform:ios, '7.0'
-pod 'PFObjC', '~> 0.2'
+pod 'PFObjC', '~> 0.3'
 ```
 
 使用

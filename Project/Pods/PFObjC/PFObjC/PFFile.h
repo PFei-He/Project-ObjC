@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFObjC
 //
-//  vesion: 0.2.3
+//  vesion: 0.4.0
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -40,7 +40,7 @@
  *  @param fileName: 文件名
  *  @return 无
  */
-+ (void)createFileWithName:(NSString *)fileName;
++ (void)createWithName:(NSString *)fileName;
 
 /**
  *  @brief 创建文件
@@ -49,7 +49,7 @@
  *  @param params: 写入的参数
  *  @return 无
  */
-+ (void)createFileWithName:(NSString *)fileName params:(NSDictionary *)params;
++ (void)createWithName:(NSString *)fileName params:(NSDictionary *)params;
 
 /**
  *  @brief 读取Dictionary类型文件
@@ -98,7 +98,7 @@
  *  @param params: 写入到文件的参数
  *  @return 写入结果
  */
-+ (BOOL)fileWithName:(NSString *)fileName setParams:(NSDictionary *)params;
++ (BOOL)modifyWithName:(NSString *)fileName setParams:(NSDictionary *)params;
 
 /**
  *  @brief 添加参数
@@ -107,7 +107,7 @@
  *  @param params: 添加到文件的参数
  *  @return 写入结果
  */
-+ (BOOL)fileWithName:(NSString *)fileName addParams:(NSDictionary *)params;
++ (BOOL)modifyWithName:(NSString *)fileName addParams:(NSDictionary *)params;
 
 /**
  *  @brief 删除文件
@@ -115,6 +115,6 @@
  *  @param fileName: 文件名
  *  @return 无
  */
-+ (void)removeFileWithName:(NSString *)fileName;
++ (void)removeWithName:(NSString *)fileName;
 
 @end

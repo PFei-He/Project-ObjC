@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '314847655DE97D5A80AE1C5C'
+               BlueprintIdentifier = '5988DE4433A09649CBA4E84A4E243336'
                BlueprintName = 'PFObjC'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPFObjC.a'>
