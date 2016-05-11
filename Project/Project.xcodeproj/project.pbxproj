@@ -274,6 +274,13 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		452046441CE1C5EF00924452 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
 		45A7303A1CE06C1900B8DB98 = {
 			isa = PBXGroup;
 			children = (
@@ -306,7 +313,9 @@
 				45A7307F1CE0758A00B8DB98 /* App */,
 				45A730A21CE0766A00B8DB98 /* Base */,
 				45A730851CE075ED00B8DB98 /* Resource */,
+				45A7305A1CE06C1900B8DB98 /* Info.plist */,
 				45A730461CE06C1900B8DB98 /* Supporting Files */,
+				452046441CE1C5EF00924452 /* Vendor */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -314,7 +323,6 @@
 		45A730461CE06C1900B8DB98 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				45A7305A1CE06C1900B8DB98 /* Info.plist */,
 				45A730471CE06C1900B8DB98 /* main.m */,
 			);
 			name = "Supporting Files";

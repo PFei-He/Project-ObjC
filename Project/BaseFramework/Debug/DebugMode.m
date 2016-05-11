@@ -60,7 +60,7 @@
 //版本号
 + (NSString *)version
 {
-    return @"0.0.3";
+    return @"[ Base Framework ] current version: 0.0.4";
 }
 
 @end
