@@ -43,7 +43,7 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 
 ///调试模式
-static BOOL debugMode = NO;
+static BOOL DEBUG_MODE = NO;
 
 @interface BaseCollectionViewController ()
 
@@ -96,8 +96,9 @@ static BOOL debugMode = NO;
     //显示提示框
     [SVProgressHUD showWithStatus:@"加载中"];
     
-    if (debugMode) {
-        NSLog(@"[ %@ ] request will start with sender: %@", [self classForCoder], notification.object);
+    if (DEBUG_MODE) {
+        NSLog(@"[ PROJECT ][ DEBUG ] Request will start with sender: %@.", notification.object);
+        NSLog(@"[ PROJECT ][ DEBUG ] Requester: %@.", [self classForCoder]);
     }
 }
 
@@ -112,8 +113,8 @@ static BOOL debugMode = NO;
         [SVProgressHUD showErrorWithStatus:@"请求失败"];
     }
     
-    if (debugMode) {
-        NSLog(@"[ %@ ] request was ended with sender: %@", [self classForCoder], notification.object);
+    if (DEBUG_MODE) {
+        NSLog(@"[ PROJECT ][ DEBUG ] Request was ended with sender: %@.", notification.object);
     }
 }
 
@@ -125,8 +126,8 @@ static BOOL debugMode = NO;
     _sender             = notification.userInfo[@"sender"];
     _requestSuccess     = YES;
     
-    if (debugMode) {
-        NSLog(@"[ %@ ] request result: %@", [_sender classForCoder], notification.object);
+    if (DEBUG_MODE) {
+        NSLog(@"[ PROJECT ][ DEBUG ] Request success with result: %@.", notification.object);
     }
 }
 
@@ -138,17 +139,17 @@ static BOOL debugMode = NO;
     _sender             = notification.userInfo[@"sender"];
     _requestSuccess     = NO;
     
-    if (debugMode) {
-        NSLog(@"[ %@ ] request result: %@", [_sender classForCoder], notification.object);
+    if (DEBUG_MODE) {
+        NSLog(@"[ PROJECT ][ DEBUG ] Request failed with result: %@.", notification.object);
     }
 }
 
 #pragma mark - Public Methods
 
 //调试模式
-+ (void)setDebugMode:(BOOL)debugOrNot
++ (void)debugMode:(BOOL)debugOrNot
 {
-    debugMode = debugOrNot;
+    DEBUG_MODE = debugOrNot;
 }
 
 @end

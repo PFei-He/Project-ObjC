@@ -38,7 +38,7 @@
 //  ***** 基础数据模型 *****
 //
 
-#import <PFObjC/PFObjC.h>
+#import <PFKitObjC/PFKit.h>
 #import "BaseRequest.h"
 
 @interface BaseModel : PFModel

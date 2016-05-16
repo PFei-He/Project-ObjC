@@ -9,7 +9,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>PFObjC.xcscheme</key>
+		<key>PFKitObjC.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,12 +27,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>476A7943E44136C5819BF74FA0F7FC66</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5988DE4433A09649CBA4E84A4E243336</key>
+		<key>5B3D948979ADB5C8EC3E6D690538BBF2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,7 +37,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E5651C8DFBC5D34C4DAE9A40642400B5</key>
+		<key>9FBAFB5C912C513DC3F7ACAA425801B5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ED2684273DEE27A40575D695457D6813</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -409,10 +409,10 @@
 		45A730A01CE0765100B8DB98 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				45A730A61CE0777A00B8DB98 /* BaseRequest.h */,
-				45A730A71CE0777A00B8DB98 /* BaseRequest.m */,
 				45A730BB1CE07B8200B8DB98 /* BaseModel.h */,
 				45A730BC1CE07B8200B8DB98 /* BaseModel.m */,
+				45A730A61CE0777A00B8DB98 /* BaseRequest.h */,
+				45A730A71CE0777A00B8DB98 /* BaseRequest.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";

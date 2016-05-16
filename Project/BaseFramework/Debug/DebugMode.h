@@ -45,17 +45,9 @@
 /**
  *  @brief 调试模式
  *  @note 无
- *  @param YES 或 NO
+ *  @param debugOrNot: 是否打开调试模式
  *  @return 无
  */
 + (void)open:(BOOL)debugOrNot;
-
-/**
- *  @brief 版本号
- *  @note 无
- *  @param 无
- *  @return version: 框架版本
- */
-+ (NSString *)version;
 
 @end

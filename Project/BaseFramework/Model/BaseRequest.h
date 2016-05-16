@@ -38,7 +38,7 @@
 //  ***** 基础请求处理 *****
 //
 
-#import <PFObjC/PFObjC.h>
+#import <PFKitObjC/PFKit.h>
 
 @interface BaseRequest : PFModel
 
@@ -51,10 +51,10 @@
 /**
  *  @brief 调试模式
  *  @note 无
- *  @param YES 或 NO
+ *  @param debugOrNot: 是否打开调试模式
  *  @return 无
  */
-+ (void)setDebugMode:(BOOL)debugOrNot;
++ (void)debugMode:(BOOL)debugOrNot;
 
 /**
  *  @brief 单例

@@ -1,1 +1,0 @@
-../../../PFObjC/PFObjC/PFQRCode.h

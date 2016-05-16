@@ -46,21 +46,36 @@
 #import "BaseTableViewController.h"
 #import "BaseViewController.h"
 
+#import <PFKitObjC/PFKit.h>
+
 @implementation DebugMode
 
 //调试模式
 + (void)open:(BOOL)debugOrNot
 {
-    [BaseCollectionViewController setDebugMode:debugOrNot];
-    [BaseRequest setDebugMode:debugOrNot];
-    [BaseTableViewController setDebugMode:debugOrNot];
-    [BaseViewController setDebugMode:debugOrNot];
+    [DebugMode debugVersion];
+    [PFDebug debugMode:debugOrNot debugTarget:@"PROJECT"];
+    
+    // MODEL
+    [BaseRequest debugMode:debugOrNot];
+    
+    // VIEW MODEL
+    [BaseCollectionViewController debugMode:debugOrNot];
+    [BaseTableViewController debugMode:debugOrNot];
+    [BaseViewController debugMode:debugOrNot];
 }
 
-//版本号
-+ (NSString *)version
+//版本信息
++ (void)debugVersion
 {
-    return @"[ Base Framework ] current version: 0.0.4";
+    NSLog(@"[ PROJECT ][ INFO ] THANK YOU FOR USING !!");
+    NSLog(@"[ PROJECT ][ INFO ] Current version: 0.0.5.");
+    NSLog(@"[ PROJECT ][ INFO ] Programming language: Objective-C.");
+    NSLog(@"[ PROJECT ][ INFO ] Open source license: MIT.");
+    NSLog(@"[ PROJECT ][ INFO ] Join me: https://github.com/PFei-He/Project-ObjC.");
+    NSLog(@"[ PROJECT ][ INFO ] Using lib: AFNetworking https://github.com/AFNetworking/AFNetworking.");
+    NSLog(@"[ PROJECT ][ INFO ] Using lib: PFKitObjC https://github.com/PFei-He/PFKitObjC.");
+    NSLog(@"[ PROJECT ][ INFO ] Using lib: SVProgressHUD https://github.com/SVProgressHUD/SVProgressHUD.");
 }
 
 @end

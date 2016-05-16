@@ -42,14 +42,14 @@
 #import <AFNetworking/AFNetworking.h>
 
 ///调试模式
-static BOOL debugMode = NO;
+static BOOL DEBUG_MODE = NO;
 
 @implementation BaseRequest
 
 //调试模式
-+ (void)setDebugMode:(BOOL)debugOrNot
++ (void)debugMode:(BOOL)debugOrNot
 {
-    debugMode = debugOrNot;
+    DEBUG_MODE = debugOrNot;
 }
 
 //单例
@@ -78,10 +78,10 @@ static BOOL debugMode = NO;
 //发送请求
 - (void)sendWithAPI:(NSString *)api params:(NSDictionary *)params results:(void (^)(id))block
 {
-    if (debugMode) {
-        NSLog(@"[ %@ ] request url: %@%@", [self classForCoder], [BaseRequest sharedInstance].hostAddress, api);
+    if (DEBUG_MODE) {
+        NSLog(@"[ PROJECT ][ DEBUG ] Request url: %@%@.", [BaseRequest sharedInstance].hostAddress, api);
         if (![params isEqualToDictionary:@{}]) {
-            NSLog(@"[ %@ ] request params: %@", [self classForCoder], params);
+            NSLog(@"[ PROJECT ][ DEBUG ] Request params: %@.", params);
         }
     }
     
@@ -94,8 +94,8 @@ static BOOL debugMode = NO;
             block(responseObject);
         }
     } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {//请求失败
-        if (debugMode) {
-            NSLog(@"[ %@ ] request error: %@", [self classForCoder], error);
+        if (DEBUG_MODE) {
+            NSLog(@"[ PROJECT ][ DEBUG ] Request error: %@.", error);
         }
         block(nil);
     }];

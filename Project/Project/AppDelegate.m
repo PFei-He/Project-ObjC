@@ -22,7 +22,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //打开调试模式
-//    [DebugMode open:YES];
+    [DebugMode open:YES];
     //初始化登录页（初始打开为引导页）
     self.window.rootViewController = [Initialization initLaunch];
     //初始化主机地址

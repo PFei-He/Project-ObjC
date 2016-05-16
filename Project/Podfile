@@ -1,6 +1,6 @@
 target 'Project' do
 	platform :ios, '7.0'
 	pod 'AFNetworking', '~> 3.0'
-	pod 'PFObjC', '~> 0.4'
+	pod 'PFKitObjC', '~> 0.0.6'
 	pod 'SVProgressHUD', '~> 1.0'
 end
