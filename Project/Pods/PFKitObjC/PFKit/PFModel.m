@@ -114,7 +114,12 @@ static NSString *DEBUG_TARGET = @"";
         }
         return;
     } else if ([JSON isKindOfClass:[NSData class]]) {
-        JSON = [NSJSONSerialization JSONObjectWithData:JSON options:NSJSONReadingAllowFragments error:nil];
+        NSError *error = nil;
+        JSON = [NSJSONSerialization JSONObjectWithData:JSON options:NSJSONReadingAllowFragments error:&error];
+        if (error && DEBUG_MODE) {
+            NSLog(@"[ %@ ][ ERROR ] The JSON object can't be parsed.", DEBUG_TARGET);
+            NSLog(@"[ %@ ][ ERROR ] Class: %@.", DEBUG_TARGET, [self classForCoder]);
+        }
     }
     //将键值设置为属性（解析JSON）
     [self setValuesForKeysWithDictionary:JSON];
@@ -147,7 +152,7 @@ static NSString *DEBUG_TARGET = @"";
     if ([parser parse]) {//解析XML
         self.JSON = self.array[0];
     } else if (DEBUG_MODE) {
-        NSLog(@"[ %@ ][ ERROR ] XML data can't be parse.", DEBUG_TARGET);
+        NSLog(@"[ %@ ][ ERROR ] The XML object can't be parsed.", DEBUG_TARGET);
         NSLog(@"[ %@ ][ ERROR ] Class: %@.", DEBUG_TARGET, [self classForCoder]);
     }
 }

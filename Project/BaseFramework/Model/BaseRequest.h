@@ -51,10 +51,10 @@
 /**
  *  @brief 调试模式
  *  @note 无
- *  @param debugOrNot: 是否打开调试模式
+ *  @param openOrNot: 是否打开调试模式
  *  @return 无
  */
-+ (void)debugMode:(BOOL)debugOrNot;
++ (void)debugMode:(BOOL)openOrNot;
 
 /**
  *  @brief 单例
@@ -105,7 +105,7 @@
  *  @param 无
  *  @return 无
  */
-- (void)requestWillStart;
+//- (void)requestWillStart;
 
 /**
  *  @brief 请求已经结束
@@ -113,7 +113,7 @@
  *  @param 无
  *  @return 无
  */
-- (void)requestWasEnded;
+//- (void)requestWasEnded;
 
 /**
  *  @brief 请求成功

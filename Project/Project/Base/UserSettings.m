@@ -43,7 +43,7 @@
 @implementation UserSettings
 
 //初始化
-+ (instancetype)settings
++ (instancetype)userSettings
 {
     UserSettings *settings = [[UserSettings alloc] init];
     if (self) {
@@ -53,9 +53,9 @@
 }
 
 //保存用户设置
-+ (BOOL)setUserSettings:(NSDictionary *)settings
++ (BOOL)setUserSettings:(NSDictionary *)userSettings
 {
-    return [PFFile modifyWithName:@"User-Settings.txt" setParams:settings];
+    return [PFFile modifyWithName:@"User-Settings.txt" setParams:userSettings];
 }
 
 @end

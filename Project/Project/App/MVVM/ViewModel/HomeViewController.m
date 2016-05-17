@@ -30,7 +30,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    UserSettings *settings = [UserSettings settings];
+    UserSettings *settings = [UserSettings userSettings];
     self.req.requestAPI = settings.api;
     [self.req send];
 }

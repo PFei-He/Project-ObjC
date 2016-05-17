@@ -60,10 +60,10 @@
 /**
  *  @brief 调试模式
  *  @note 无
- *  @param debugOrNot: 是否打开调试模式
+ *  @param openOrNot: 是否打开调试模式
  *  @return 无
  */
-+ (void)debugMode:(BOOL)debugOrNot;
++ (void)debugMode:(BOOL)openOrNot;
 
 /**
  *  @brief 初始化请求
@@ -87,7 +87,7 @@
  *  @param notification: 请求返回的通知对象
  *  @return 无
  */
-- (void)requestWillStartNotification:(NSNotification *)notification;
+- (void)requestStartedNotification:(NSNotification *)notification;
 
 /**
  *  @brief 请求已经结束
@@ -95,7 +95,7 @@
  *  @param notification: 请求返回的通知对象
  *  @return 无
  */
-- (void)requestWasEndedNotification:(NSNotification *)notification;
+- (void)requestEndedNotification:(NSNotification *)notification;
 
 /**
  *  @brief 请求成功的通知

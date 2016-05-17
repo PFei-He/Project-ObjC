@@ -91,19 +91,19 @@ static BOOL DEBUG_MODE = NO;
 #pragma mark - Notification Management
 
 //请求即将开始
-- (void)requestWillStartNotification:(NSNotification *)notification
+- (void)requestStartedNotification:(NSNotification *)notification
 {
     //显示提示框
     [SVProgressHUD showWithStatus:@"加载中"];
     
     if (DEBUG_MODE) {
-        NSLog(@"[ PROJECT ][ DEBUG ] Request will start with sender: %@.", notification.object);
+        NSLog(@"[ PROJECT ][ DEBUG ] Request started with sender: %@.", notification.object);
         NSLog(@"[ PROJECT ][ DEBUG ] Requester: %@.", [self classForCoder]);
     }
 }
 
 //请求已经结束
-- (void)requestWasEndedNotification:(NSNotification *)notification
+- (void)requestEndedNotification:(NSNotification *)notification
 {
     if (_requestSuccess) {//请求成功
         //移除提示框
@@ -114,7 +114,7 @@ static BOOL DEBUG_MODE = NO;
     }
     
     if (DEBUG_MODE) {
-        NSLog(@"[ PROJECT ][ DEBUG ] Request was ended with sender: %@.", notification.object);
+        NSLog(@"[ PROJECT ][ DEBUG ] Request ended with sender: %@.", notification.object);
     }
 }
 
@@ -147,9 +147,9 @@ static BOOL DEBUG_MODE = NO;
 #pragma mark - Public Methods
 
 //调试模式
-+ (void)debugMode:(BOOL)debugOrNot
++ (void)debugMode:(BOOL)openOrNot
 {
-    DEBUG_MODE = debugOrNot;
+    DEBUG_MODE = openOrNot;
 }
 
 @end

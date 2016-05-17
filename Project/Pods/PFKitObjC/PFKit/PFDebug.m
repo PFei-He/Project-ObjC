@@ -31,6 +31,7 @@
 #import "PFDebug.h"
 #import "PFFile.h"
 #import "PFModel.h"
+#import "PFScanner.h"
 
 @implementation PFDebug
 
@@ -38,7 +39,7 @@
 + (void)debugVersion
 {
     NSLog(@"[ PFKit ][ INFO ] THANK YOU FOR USING !!");
-    NSLog(@"[ PFKit ][ INFO ] Current version: 0.0.6.");
+    NSLog(@"[ PFKit ][ INFO ] Current version: 0.0.7.");
     NSLog(@"[ PFKit ][ INFO ] Programming language: Objective-C.");
     NSLog(@"[ PFKit ][ INFO ] Open source license: MIT.");
     NSLog(@"[ PFKit ][ INFO ] Join me: https://github.com/PFei-He/PFKitObjC.");
@@ -49,6 +50,7 @@
 {
     [PFFile debugMode:openOrNot debugTarget:@"PFKit"];
     [PFModel debugMode:openOrNot debugTarget:@"PFKit"];
+    [PFScanner debugMode:openOrNot debugTarget:@"PFKit"];
 }
 
 //调试模式
@@ -56,6 +58,7 @@
 {
     [PFFile debugMode:openOrNot debugTarget:target];
     [PFModel debugMode:openOrNot debugTarget:target];
+    [PFScanner debugMode:openOrNot debugTarget:target];
 }
 
 @end

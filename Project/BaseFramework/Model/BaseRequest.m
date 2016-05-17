@@ -47,9 +47,9 @@ static BOOL DEBUG_MODE = NO;
 @implementation BaseRequest
 
 //调试模式
-+ (void)debugMode:(BOOL)debugOrNot
++ (void)debugMode:(BOOL)openOrNot
 {
-    DEBUG_MODE = debugOrNot;
+    DEBUG_MODE = openOrNot;
 }
 
 //单例
@@ -78,6 +78,9 @@ static BOOL DEBUG_MODE = NO;
 //发送请求
 - (void)sendWithAPI:(NSString *)api params:(NSDictionary *)params results:(void (^)(id))block
 {
+    //发送请求开始的通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Started"] object:[self classForCoder]];
+    
     if (DEBUG_MODE) {
         NSLog(@"[ PROJECT ][ DEBUG ] Request url: %@%@.", [BaseRequest sharedInstance].hostAddress, api);
         if (![params isEqualToDictionary:@{}]) {
@@ -104,57 +107,73 @@ static BOOL DEBUG_MODE = NO;
 //添加请求者
 - (void)addRequester:(id)requester
 {
-    [[NSNotificationCenter defaultCenter] addObserver:requester selector:NSSelectorFromString(@"requestWillStartNotification:") name:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"WillStart"] object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:requester selector:NSSelectorFromString(@"requestWasEndedNotification:") name:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"WasEnded"] object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:requester selector:NSSelectorFromString(@"requestStartedNotification:") name:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Started"] object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:requester selector:NSSelectorFromString(@"requestEndedNotification:") name:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Ended"] object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:requester selector:NSSelectorFromString(@"requestSuccessNotification:") name:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Success"] object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:requester selector:NSSelectorFromString(@"requestFailedNotification:") name:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Failed"] object:nil];
 }
 
 //请求即将开始
-- (void)requestWillStart
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"WillStart"] object:[self classForCoder]];
-}
+//- (void)requestWillStart
+//{
+//    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"WillStart"] object:[self classForCoder]];
+//}
 
 //请求已经结束
-- (void)requestWasEnded
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"WasEnded"] object:[self classForCoder]];
-}
+//- (void)requestWasEnded
+//{
+//    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"WasEnded"] object:[self classForCoder]];
+//}
 
 //请求成功
 - (void)requestSuccessWithObject:(id)object
 {
+    //发送请求成功通知
     [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Success"] object:object userInfo:@{@"sender": [self classForCoder]}];
+    
+    //发送请求结束通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Ended"] object:[self classForCoder]];
 }
 
 //请求成功
 - (void)requestSuccessWithObject:(id)object userInfo:(NSDictionary *)userInfo
 {
+    //发送请求成功通知
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:userInfo];
     [dictionary addEntriesFromDictionary:@{@"sender": [self classForCoder]}];
     [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Success"] object:object userInfo:dictionary];
+    
+    //发送请求结束通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Ended"] object:[self classForCoder]];
 }
 
 //请求失败
 - (void)requestFailedWithObject:(id)object
 {
+    //发送请求失败通知
     [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Failed"] object:object userInfo:@{@"sender": [self classForCoder]}];
+    
+    //发送请求结束通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Ended"] object:[self classForCoder]];
 }
 
 //请求失败
 - (void)requestFailedWithObject:(id)object userInfo:(NSDictionary *)userInfo
 {
+    //发送请求失败通知
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:userInfo];
     [dictionary addEntriesFromDictionary:@{@"sender": [self classForCoder]}];
     [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Failed"] object:object userInfo:dictionary];
+    
+    //发送请求结束通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Ended"] object:[self classForCoder]];
 }
 
 //移除请求者
 - (void)removeRequester:(id)requester
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:requester name:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"WillStart"] object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:requester name:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"WasEnded"] object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:requester name:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Started"] object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:requester name:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Ended"] object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:requester name:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Success"] object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:requester name:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Failed"] object:nil];
 }

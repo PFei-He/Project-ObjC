@@ -53,7 +53,6 @@
 //发送请求
 - (void)send
 {
-    [self requestWillStart];
     @weakify_self
     [self send:^(id JSON) {
         @strongify_self
@@ -61,10 +60,8 @@
             WeatherModel *model = [WeatherModel modelWithJSON:JSON];
             WeatherResult *result = [WeatherResult modelWithJSON:model.weatherinfo];
             [self requestSuccessWithObject:result];
-            [self requestWasEnded];
         } else {
             [self requestFailedWithObject:@"请求失败"];
-            [self requestWasEnded];
         }
     }];
 }

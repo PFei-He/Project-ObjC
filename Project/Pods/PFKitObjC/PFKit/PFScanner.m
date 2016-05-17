@@ -31,6 +31,11 @@
 #import "PFScanner.h"
 #import <AVFoundation/AVFoundation.h>
 
+///调试模式
+static BOOL DEBUG_MODE = NO;
+///调试目标
+static NSString *DEBUG_TARGET = @"";
+
 @interface PFScanner () <AVCaptureMetadataOutputObjectsDelegate>
 
 ///输出
@@ -51,7 +56,6 @@
 {
     self = [super init];
     if (self) {
-        
         //设置输出（Metadata元数据）
         self.output = [[AVCaptureMetadataOutput alloc] init];
     }
@@ -76,7 +80,12 @@
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
     //设置输入，把摄像头作为输入设备
-    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
+    NSError *error = nil;
+    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
+    
+    if (error && DEBUG_MODE) {
+        NSLog(@"[ %@ ][ ERROR ] Device input error.", DEBUG_TARGET);
+    }
     
     //设置输出的代理
     [self.output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
@@ -119,6 +128,13 @@
     
     //开始会话
     [self.session startRunning];
+}
+
+//调试模式
++ (void)debugMode:(BOOL)openOrNot debugTarget:(NSString *)target
+{
+    DEBUG_MODE = openOrNot;
+    DEBUG_TARGET = target;
 }
 
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate Methods

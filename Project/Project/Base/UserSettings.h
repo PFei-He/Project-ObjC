@@ -48,16 +48,16 @@
  *  @brief 初始化
  *  @note 无
  *  @param 无
- *  @return BPSettings实例
+ *  @return UserSettings实例
  */
-+ (instancetype)settings;
++ (instancetype)userSettings;
 
 /**
  *  @brief 保存用户设置
  *  @note 无
- *  @param userSetting: 需要保存的用户设置
+ *  @param userSettings: 需要保存的用户设置
  *  @return 保存结果
  */
-+ (BOOL)setUserSettings:(NSDictionary *)settings;
++ (BOOL)setUserSettings:(NSDictionary *)userSettings;
 
 @end
