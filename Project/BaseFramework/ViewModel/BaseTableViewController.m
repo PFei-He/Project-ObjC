@@ -75,7 +75,7 @@ static BOOL DEBUG_MODE = NO;
 //移除请求
 //- (void)removeRequests:(NSArray *)requests
 //{
-//    for (PFModel *request in requests) {
+//    for (BaseRequest *request in requests) {
 //        [request removeRequester:self];
 //    }
 //}
