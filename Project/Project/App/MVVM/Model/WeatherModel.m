@@ -59,9 +59,9 @@
         if (JSON) {
             WeatherModel *model = [WeatherModel modelWithJSON:JSON];
             WeatherResult *result = [WeatherResult modelWithJSON:model.weatherinfo];
-            [self requestSuccessWithObject:result];
+            [self finishedWithSuccessObject:result];
         } else {
-            [self requestFailedWithObject:@"请求失败"];
+            [self finishedWithFailureObject:@"请求失败"];
         }
     }];
 }

@@ -49,20 +49,20 @@
 @property (copy, nonatomic) NSString *requestAPI;
 
 /**
- *  @brief 调试模式
- *  @note 无
- *  @param openOrNot: 是否打开调试模式
- *  @return 无
- */
-+ (void)debugMode:(BOOL)openOrNot;
-
-/**
  *  @brief 单例
  *  @note 无
  *  @param 无
  *  @return 实例
  */
 + (BaseRequest *)sharedInstance;
+
+/**
+ *  @brief 添加请求者
+ *  @note 无
+ *  @param requester: 请求者
+ *  @return 无
+ */
+- (void)addRequester:(id)requester;
 
 /**
  *  @brief 发送请求
@@ -92,62 +92,37 @@
 - (void)sendWithAPI:(NSString *)api params:(NSDictionary *)params results:(void (^)(id JSON))block;
 
 /**
- *  @brief 添加请求者
+ *  @brief 请求成功
  *  @note 无
- *  @param requester: 请求者
+ *  @param successObject: 请求结果
  *  @return 无
  */
-- (void)addRequester:(id)requester;
-
-/**
- *  @brief 请求即将开始
- *  @note 无
- *  @param 无
- *  @return 无
- */
-//- (void)requestWillStart;
-
-/**
- *  @brief 请求已经结束
- *  @note 无
- *  @param 无
- *  @return 无
- */
-//- (void)requestWasEnded;
-
+- (void)finishedWithSuccessObject:(id)successObject;
 /**
  *  @brief 请求成功
  *  @note 无
- *  @param object: 请求结果
+ *  @param successObject: 请求结果
+ *  @param additionalObjects: 附带参数
  *  @return 无
  */
-- (void)requestSuccessWithObject:(id)object;
-
-/**
- *  @brief 请求成功
- *  @note 无
- *  @param object: 请求结果
- *  @param userInfo: 附带参数
- *  @return 无
- */
-- (void)requestSuccessWithObject:(id)object userInfo:(NSDictionary *)userInfo;
+- (void)finishedWithSuccessObject:(id)successObject additionalObjects:(NSDictionary *)additionalObjects;
 
 /**
  *  @brief 请求失败
  *  @note 无
- *  @param object: 请求结果
+ *  @param failureObject: 请求结果
  *  @return 无
  */
-- (void)requestFailedWithObject:(id)object;
+- (void)finishedWithFailureObject:(id)failureObject;
 
 /**
  *  @brief 请求失败
  *  @note 无
- *  @param object: 请求结果
- *  @param userInfo: 附带参数
+ *  @param failureObject: 请求结果
+ *  @param additionalObjects: 附带参数
  *  @return 无
  */
-- (void)requestFailedWithObject:(id)object userInfo:(NSDictionary *)userInfo;
+- (void)finishedWithFailureObject:(id)failureObject additionalObjects:(NSDictionary *)additionalObjects;
 
 /**
  *  @brief 移除请求者
@@ -156,5 +131,13 @@
  *  @return 无
  */
 - (void)removeRequester:(id)requester;
+
+/**
+ *  @brief 调试模式
+ *  @note 无
+ *  @param openOrNot: 是否打开调试模式
+ *  @return 无
+ */
++ (void)debugMode:(BOOL)openOrNot;
 
 @end

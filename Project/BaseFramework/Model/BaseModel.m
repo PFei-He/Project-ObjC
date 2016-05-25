@@ -40,6 +40,15 @@
 
 #import "BaseModel.h"
 
+///调试模式
+static BOOL DEBUG_MODE = NO;
+
 @implementation BaseModel
+
+//调试模式
++ (void)debugMode:(BOOL)openOrNot
+{
+    DEBUG_MODE = openOrNot;
+}
 
 @end

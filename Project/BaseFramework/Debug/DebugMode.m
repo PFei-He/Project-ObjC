@@ -57,6 +57,7 @@
     [PFDebug debugMode:debugOrNot debugTarget:@"PROJECT"];
     
     // MODEL
+    [BaseModel debugMode:debugOrNot];
     [BaseRequest debugMode:debugOrNot];
     
     // VIEW MODEL
@@ -69,7 +70,7 @@
 + (void)debugVersion
 {
     NSLog(@"[ PROJECT ][ INFO ] THANK YOU FOR USING !!");
-    NSLog(@"[ PROJECT ][ INFO ] Current version: 0.0.7.");
+    NSLog(@"[ PROJECT ][ INFO ] Current version: 0.0.8.");
     NSLog(@"[ PROJECT ][ INFO ] Programming language: Objective-C.");
     NSLog(@"[ PROJECT ][ INFO ] Open source license: MIT.");
     NSLog(@"[ PROJECT ][ INFO ] Join me: https://github.com/PFei-He/Project-ObjC.");

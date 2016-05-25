@@ -53,7 +53,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self initRequests:@[self.req?self.req:(self.req=[MoreRequest new])]];
+    [self addRequests:@[self.req?self.req:(self.req=[MoreRequest new])]];
     [self.req send];
 }
 

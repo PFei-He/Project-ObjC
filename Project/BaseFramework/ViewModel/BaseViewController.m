@@ -58,13 +58,13 @@ static BOOL DEBUG_MODE = NO;
 
 - (void)dealloc
 {
-    [self removeRequests];
+    [self removeAllRequests];
 }
 
 #pragma mark - Request Management
 
 //初始化请求
-- (void)initRequests:(NSArray *)requests
+- (void)addRequests:(NSArray *)requests
 {
     self.requests = requests;
     for (BaseRequest *request in requests) {
@@ -81,7 +81,7 @@ static BOOL DEBUG_MODE = NO;
 //}
 
 //移除请求
-- (void)removeRequests
+- (void)removeAllRequests
 {
     for (BaseRequest *request in self.requests) {
         [request removeRequester:self];
@@ -90,61 +90,103 @@ static BOOL DEBUG_MODE = NO;
 
 #pragma mark - Notification Management
 
-//请求即将开始
+//请求开始通知
 - (void)requestStartedNotification:(NSNotification *)notification
 {
-    //显示提示框
-    [SVProgressHUD showWithStatus:@"加载中"];
-    
-    if (DEBUG_MODE) {
+    if (DEBUG_MODE) {//调试模式
         NSLog(@"[ PROJECT ][ DEBUG ] Request started with sender: %@.", notification.object);
         NSLog(@"[ PROJECT ][ DEBUG ] Requester: %@.", [self classForCoder]);
     }
+    
+    //请求开始
+    [self requestStarted];
 }
 
-//请求已经结束
+//请求结束通知
 - (void)requestEndedNotification:(NSNotification *)notification
 {
-    if (_requestSuccess) {//请求成功
+    if (DEBUG_MODE) {//调试模式
+        NSLog(@"[ PROJECT ][ DEBUG ] Request ended with sender: %@.", notification.object);
+    }
+    
+    //请求结束
+    [self requestEnded];
+}
+
+//请求成功通知
+- (void)requestSuccessNotification:(NSNotification *)notification
+{
+    if (DEBUG_MODE) {//调试模式
+        NSLog(@"[ PROJECT ][ DEBUG ] Request success with result: %@.", notification.object);
+    }
+    
+    //处理请求结果
+    _successObject      = notification.object;
+    if ([notification.userInfo isKindOfClass:[NSDictionary class]]) {
+        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:(NSDictionary *)notification.userInfo];
+        [dictionary removeObjectForKey:@"sender"];
+        _additionalObjects = dictionary;
+    }
+    _sender             = notification.userInfo[@"sender"];
+    _requestIsSuccess   = YES;
+    
+    //请求成功
+    [self requestSuccess];
+}
+
+//请求失败通知
+- (void)requestFailedNotification:(NSNotification *)notification
+{
+    if (DEBUG_MODE) {//调试模式
+        NSLog(@"[ PROJECT ][ DEBUG ] Request failed with result: %@.", notification.object);
+    }
+    
+    //处理请求结果
+    _failureObject      = notification.object;
+    if ([notification.userInfo isKindOfClass:[NSDictionary class]]) {
+        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:(NSDictionary *)notification.userInfo];
+        [dictionary removeObjectForKey:@"sender"];
+        _additionalObjects = dictionary;
+    }
+    _sender             = notification.userInfo[@"sender"];
+    _requestIsSuccess   = NO;
+    
+    //请求失败
+    [self requestFailed];
+}
+
+#pragma mark - Public Methods
+
+//请求开始
+- (void)requestStarted
+{
+    //显示提示框
+    [SVProgressHUD showWithStatus:@"加载中"];
+}
+
+//请求结束
+- (void)requestEnded
+{
+    if (_requestIsSuccess) {//请求成功
         //移除提示框
         [SVProgressHUD dismiss];
     } else {//请求失败
         //显示请求失败的提示框
-        [SVProgressHUD showErrorWithStatus:self.failedObject];
-    }
-    
-    if (DEBUG_MODE) {
-        NSLog(@"[ PROJECT ][ DEBUG ] Request ended with sender: %@.", notification.object);
+        [SVProgressHUD showErrorWithStatus:@"请求失败"];
     }
 }
 
 //请求成功
-- (void)requestSuccessNotification:(NSNotification *)notification
+- (void)requestSuccess
 {
-    _successObject      = notification.object;
-    _additionalObjects  = notification.userInfo;
-    _sender             = notification.userInfo[@"sender"];
-    _requestSuccess     = YES;
-    
-    if (DEBUG_MODE) {
-        NSLog(@"[ PROJECT ][ DEBUG ] Request success with result: %@.", notification.object);
-    }
+    // Override this method to process the request when request success.
 }
 
 //请求失败
-- (void)requestFailedNotification:(NSNotification *)notification
+- (void)requestFailed
 {
-    _failedObject       = notification.object;
-    _additionalObjects  = notification.userInfo;
-    _sender             = notification.userInfo[@"sender"];
-    _requestSuccess     = NO;
-    
-    if (DEBUG_MODE) {
-        NSLog(@"[ PROJECT ][ DEBUG ] Request failed with result: %@.", notification.object);
-    }
+    // Override this method to process the request when request failed.
 }
-
-#pragma mark - Public Methods
 
 //调试模式
 + (void)debugMode:(BOOL)openOrNot

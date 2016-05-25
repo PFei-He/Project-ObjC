@@ -46,12 +46,6 @@ static BOOL DEBUG_MODE = NO;
 
 @implementation BaseRequest
 
-//调试模式
-+ (void)debugMode:(BOOL)openOrNot
-{
-    DEBUG_MODE = openOrNot;
-}
-
 //单例
 + (BaseRequest *)sharedInstance
 {
@@ -113,57 +107,45 @@ static BOOL DEBUG_MODE = NO;
     [[NSNotificationCenter defaultCenter] addObserver:requester selector:NSSelectorFromString(@"requestFailedNotification:") name:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Failed"] object:nil];
 }
 
-//请求即将开始
-//- (void)requestWillStart
-//{
-//    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"WillStart"] object:[self classForCoder]];
-//}
-
-//请求已经结束
-//- (void)requestWasEnded
-//{
-//    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"WasEnded"] object:[self classForCoder]];
-//}
-
 //请求成功
-- (void)requestSuccessWithObject:(id)object
+- (void)finishedWithSuccessObject:(id)successObject
 {
     //发送请求成功通知
-    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Success"] object:object userInfo:@{@"sender": [self classForCoder]}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Success"] object:successObject userInfo:@{@"sender": [self classForCoder]}];
     
     //发送请求结束通知
     [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Ended"] object:[self classForCoder]];
 }
 
 //请求成功
-- (void)requestSuccessWithObject:(id)object userInfo:(NSDictionary *)userInfo
+- (void)finishedWithSuccessObject:(id)successObject additionalObjects:(NSDictionary *)additionalObjects
 {
     //发送请求成功通知
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:userInfo];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:additionalObjects];
     [dictionary addEntriesFromDictionary:@{@"sender": [self classForCoder]}];
-    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Success"] object:object userInfo:dictionary];
+    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Success"] object:successObject userInfo:dictionary];
     
     //发送请求结束通知
     [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Ended"] object:[self classForCoder]];
 }
 
 //请求失败
-- (void)requestFailedWithObject:(id)object
+- (void)finishedWithFailureObject:(id)failureObject
 {
     //发送请求失败通知
-    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Failed"] object:object userInfo:@{@"sender": [self classForCoder]}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Failed"] object:failureObject userInfo:@{@"sender": [self classForCoder]}];
     
     //发送请求结束通知
     [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Ended"] object:[self classForCoder]];
 }
 
 //请求失败
-- (void)requestFailedWithObject:(id)object userInfo:(NSDictionary *)userInfo
+- (void)finishedWithFailureObject:(id)failureObject additionalObjects:(NSDictionary *)additionalObjects
 {
     //发送请求失败通知
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:userInfo];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:additionalObjects];
     [dictionary addEntriesFromDictionary:@{@"sender": [self classForCoder]}];
-    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Failed"] object:object userInfo:dictionary];
+    [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Failed"] object:failureObject userInfo:dictionary];
     
     //发送请求结束通知
     [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Ended"] object:[self classForCoder]];
@@ -176,6 +158,12 @@ static BOOL DEBUG_MODE = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:requester name:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Ended"] object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:requester name:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Success"] object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:requester name:[NSString stringWithFormat:@"%@%@", [self classForCoder], @"Failed"] object:nil];
+}
+
+//调试模式
++ (void)debugMode:(BOOL)openOrNot
+{
+    DEBUG_MODE = openOrNot;
 }
 
 @end

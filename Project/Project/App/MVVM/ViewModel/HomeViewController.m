@@ -25,11 +25,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self initRequests:@[self.req?self.req:(self.req=[WeatherRequest new])]];
+    [self addRequests:@[self.req?self.req:(self.req=[WeatherRequest new])]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     UserSettings *settings = [UserSettings userSettings];
     self.req.requestAPI = settings.api;
     [self.req send];
@@ -48,12 +50,12 @@
     [self performSegueWithIdentifier:@"push" sender:self];
 }
 
-#pragma mark - Notification Management
+#pragma mark - Request Management
 
-- (void)requestSuccessNotification:(NSNotification *)notification
+- (void)requestSuccess
 {
-    [super requestSuccessNotification:notification];
     WeatherResult *result = (WeatherResult *)self.successObject;
+    NSLog(@"%@", self.additionalObjects);
     self.cityLabel.text = result.city;
     self.temperatureLabel.text = [NSString stringWithFormat:@"%@%@", result.temp, @"℃"];
 }
