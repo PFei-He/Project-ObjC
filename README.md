@@ -9,7 +9,7 @@
 
 版本
 ---
-0.0.6
+0.0.9
 
 说明
 ---
@@ -19,6 +19,9 @@
 * CocoaPods
 * 网络请求
 * KVC解析JSON
+* XML转化JSON
+* 二维码生成和扫描
+* 文件管理
 
 #### 目录解释
 `Project`使用`MVVM`架构搭建，共分为2个目录，3个部分。
@@ -55,9 +58,9 @@
         if (JSON) {
             WeatherModel *model = [WeatherModel modelWithJSON:JSON];
             WeatherResult *result = [WeatherResult modelWithJSON:model.weatherinfo];
-            [self requestSuccessWithObject:result];
+            [self finishedWithSuccessObject:result];
         } else {
-            [self requestFailedWithObject:@"请求失败"];
+            [self finishedWithFailureObject:@"请求失败"];
         }
     }];
 }
@@ -66,14 +69,13 @@
 #### ViewModel
 ```objective-c
 //添加网络请求
-[self initRequests:@[self.req?self.req:(self.req=[WeatherRequest new])]];
+[self addRequests:@[self.req?self.req:(self.req=[WeatherRequest new])]];
 ```
 
 ```objective-c
 //请求成功
-- (void)requestSuccessNotification:(NSNotification *)notification
+- (void)requestSuccess
 {
-    [super requestSuccessNotification:notification];
     WeatherResult *result = (WeatherResult *)self.successObject;
     self.cityLabel.text = result.city;
     self.temperatureLabel.text = [NSString stringWithFormat:@"%@%@", result.temp, @"℃"];

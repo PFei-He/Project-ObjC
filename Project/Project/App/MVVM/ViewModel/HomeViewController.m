@@ -55,7 +55,6 @@
 - (void)requestSuccess
 {
     WeatherResult *result = (WeatherResult *)self.successObject;
-    NSLog(@"%@", self.additionalObjects);
     self.cityLabel.text = result.city;
     self.temperatureLabel.text = [NSString stringWithFormat:@"%@%@", result.temp, @"℃"];
 }
