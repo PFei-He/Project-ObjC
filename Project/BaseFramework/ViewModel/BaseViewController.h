@@ -43,13 +43,13 @@
 @interface BaseViewController : UIViewController
 
 ///请求成功返回的结果
-@property (strong, nonatomic, readonly) id successObject;
+@property (strong, nonatomic, readonly) id successResult;
 
 ///请求失败返回的结果
-@property (strong, nonatomic, readonly) id failureObject;
+@property (strong, nonatomic, readonly) id failureResult;
 
 ///请求返回的附加结果
-@property (strong, nonatomic, readonly) id additionalObjects;
+@property (strong, nonatomic, readonly) id additionalResults;
 
 ///请求的发送者
 @property (strong, nonatomic, readonly) id sender;
@@ -103,7 +103,7 @@
  *  @param 无
  *  @return 无
  */
-- (void)requestFailed;
+- (void)requestFailure;
 
 /**
  *  @brief 调试模式

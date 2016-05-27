@@ -43,13 +43,13 @@
 @interface BaseTableViewController : UITableViewController
 
 ///请求成功返回的结果
-@property (strong, nonatomic, readonly) id successObject;
+@property (strong, nonatomic, readonly) id successResult;
 
 ///请求失败返回的结果
-@property (strong, nonatomic, readonly) id failureObject;
+@property (strong, nonatomic, readonly) id failureResult;
 
 ///请求返回的附加结果
-@property (strong, nonatomic, readonly) id additionalObjects;
+@property (strong, nonatomic, readonly) id additionalResults;
 
 ///请求的发送者
 @property (strong, nonatomic, readonly) id sender;
@@ -74,36 +74,36 @@
 //- (void)removeRequests:(NSArray *)requests;
 
 /**
- *  @brief 请求即将开始
+ *  @brief 请求开始
  *  @note 此方法已实现提示框的处理，如需自定义，请自行重写此方法
- *  @param notification: 请求返回的通知对象
+ *  @param 无
  *  @return 无
  */
-- (void)requestStartedNotification:(NSNotification *)notification;
+- (void)requestStarted;
 
 /**
- *  @brief 请求已经结束
+ *  @brief 请求结束
  *  @note 此方法已实现提示框的处理，如需自定义，请自行重写此方法
- *  @param notification: 请求返回的通知对象
+ *  @param 无
  *  @return 无
  */
-- (void)requestEndedNotification:(NSNotification *)notification;
+- (void)requestEnded;
 
 /**
- *  @brief 请求成功的通知
+ *  @brief 请求成功
  *  @note 无
- *  @param notification: 请求返回的通知对象
+ *  @param 无
  *  @return 无
  */
-- (void)requestSuccessNotification:(NSNotification *)notification;
+- (void)requestSuccess;
 
 /**
- *  @brief 请求失败的通知
+ *  @brief 请求失败
  *  @note 无
- *  @param notification: 请求返回的通知对象
+ *  @param 无
  *  @return 无
  */
-- (void)requestFailedNotification:(NSNotification *)notification;
+- (void)requestFailure;
 
 /**
  *  @brief 调试模式

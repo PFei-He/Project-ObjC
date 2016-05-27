@@ -94,35 +94,35 @@
 /**
  *  @brief 请求成功
  *  @note 无
- *  @param successObject: 请求结果
+ *  @param successResult: 请求结果
  *  @return 无
  */
-- (void)finishedWithSuccessObject:(id)successObject;
+- (void)finishedWithSuccessResult:(id)successResult;
 /**
  *  @brief 请求成功
  *  @note 无
- *  @param successObject: 请求结果
- *  @param additionalObjects: 附带参数
+ *  @param successResult: 请求结果
+ *  @param additionalResults: 附带参数
  *  @return 无
  */
-- (void)finishedWithSuccessObject:(id)successObject additionalObjects:(NSDictionary *)additionalObjects;
+- (void)finishedWithSuccessResult:(id)successResult additionalResults:(NSDictionary *)additionalResults;
 
 /**
  *  @brief 请求失败
  *  @note 无
- *  @param failureObject: 请求结果
+ *  @param failureResult: 请求结果
  *  @return 无
  */
-- (void)finishedWithFailureObject:(id)failureObject;
+- (void)finishedWithFailureResult:(id)failureResult;
 
 /**
  *  @brief 请求失败
  *  @note 无
- *  @param failureObject: 请求结果
- *  @param additionalObjects: 附带参数
+ *  @param failureResult: 请求结果
+ *  @param additionalResults: 附带参数
  *  @return 无
  */
-- (void)finishedWithFailureObject:(id)failureObject additionalObjects:(NSDictionary *)additionalObjects;
+- (void)finishedWithFailureResult:(id)failureResult additionalResults:(NSDictionary *)additionalResults;
 
 /**
  *  @brief 移除请求者

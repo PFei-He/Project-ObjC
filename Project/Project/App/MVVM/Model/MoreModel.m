@@ -22,7 +22,7 @@
 - (void)send
 {
     MoreModel *model = [MoreModel modelWithJSON:[self params]];
-    [self finishedWithSuccessObject:model];
+    [self finishedWithSuccessResult:model];
 }
 
 ///参数

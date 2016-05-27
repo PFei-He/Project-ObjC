@@ -121,11 +121,11 @@ static BOOL DEBUG_MODE = NO;
     }
     
     //处理请求结果
-    _successObject      = notification.object;
+    _successResult      = notification.object;
     if ([notification.userInfo isKindOfClass:[NSDictionary class]]) {
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:(NSDictionary *)notification.userInfo];
         [dictionary removeObjectForKey:@"sender"];
-        _additionalObjects = dictionary;
+        _additionalResults = dictionary;
     }
     _sender             = notification.userInfo[@"sender"];
     _requestIsSuccess   = YES;
@@ -135,24 +135,24 @@ static BOOL DEBUG_MODE = NO;
 }
 
 //请求失败通知
-- (void)requestFailedNotification:(NSNotification *)notification
+- (void)requestFailureNotification:(NSNotification *)notification
 {
     if (DEBUG_MODE) {//调试模式
-        NSLog(@"[ PROJECT ][ DEBUG ] Request failed with result: %@.", notification.object);
+        NSLog(@"[ PROJECT ][ DEBUG ] Request failure with result: %@.", notification.object);
     }
     
     //处理请求结果
-    _failureObject      = notification.object;
+    _failureResult      = notification.object;
     if ([notification.userInfo isKindOfClass:[NSDictionary class]]) {
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:(NSDictionary *)notification.userInfo];
         [dictionary removeObjectForKey:@"sender"];
-        _additionalObjects = dictionary;
+        _additionalResults = dictionary;
     }
     _sender             = notification.userInfo[@"sender"];
     _requestIsSuccess   = NO;
     
     //请求失败
-    [self requestFailed];
+    [self requestFailure];
 }
 
 #pragma mark - Public Methods
@@ -183,9 +183,9 @@ static BOOL DEBUG_MODE = NO;
 }
 
 //请求失败
-- (void)requestFailed
+- (void)requestFailure
 {
-    // Override this method to process the request when request failed.
+    // Override this method to process the request when request failure.
 }
 
 //调试模式
