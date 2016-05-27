@@ -92,7 +92,7 @@ static BOOL DEBUG_MODE = NO;
         }
     } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {//请求失败
         if (DEBUG_MODE) {
-            NSLog(@"[ PROJECT ][ DEBUG ] Request error: %@.", error);
+            NSLog(@"[ PROJECT ][ ERROR ] Request error: %@.", error);
         }
         block(nil);
     }];
