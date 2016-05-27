@@ -67,14 +67,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    MoreModel *model = (MoreModel *)self.successObject;
+    MoreModel *model = (MoreModel *)self.successResult;
     return model.result.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identifier"];
-    MoreModel *model = (MoreModel *)self.successObject;
+    MoreModel *model = (MoreModel *)self.successResult;
     MoreResults *results = [MoreResults modelWithJSON:model.result[indexPath.row]];
     cell.textLabel.text = results.text;
     cell.textLabel.textColor = [Settings appColor];
